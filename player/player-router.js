@@ -21,3 +21,7 @@ function addPlayer(user) {
 function findById(id) {
   return db("player").where({ id }).first();
 }
+
+function deleteplayer(id) {
+  return findById(id).del(id);
+}
