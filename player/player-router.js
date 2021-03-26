@@ -13,3 +13,14 @@ router.post("/register", (req, res) => {
       res.status(500).json({ error: "can not register" });
     });
 });
+
+router.get("/", (req, res) => {
+  Player.findPlayer()
+    .then((player) => {
+      res.json(player);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(500).json({ message: "could not get users" });
+    });
+});
