@@ -3,6 +3,7 @@ exports.up = function (knex) {
     user.increments("id").unique();
     user.string("playerName", 16).notNullable().unique();
     user.string("password", 255).notNullable();
+    user.boolean("online").defaultTo(false);
   });
 };
 

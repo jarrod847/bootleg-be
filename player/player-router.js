@@ -1,27 +1,41 @@
-const db = require("../database/config");
+const router = require("express").Router();
+const Player = require("./player-modal");
 
-module.exports = {
-  addPlayer,
-  findPlayer,
-  deleteplayer,
-};
+router.post("/register", (req, res) => {
+  let user = req.body;
+  console.log("message", user);
 
-function findPlayer() {
-  return db("player").select("id", "playerName");
-}
-
-function addPlayer(user) {
-  return db("player")
-    .insert(user, "id")
-    .then((id) => {
-      return findById(id);
+  Player.addPlayer(user)
+    .then((newUser) => {
+      res.status(201).json(newUser);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "can not register" });
     });
-}
+});
 
-function findById(id) {
-  return db("player").where({ id }).first();
-}
+router.get("/", (req, res) => {
+  Player.findPlayer()
+    .then((player) => {
+      res.json(player);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(500).json({ message: "could not get users" });
+    });
+});
 
-function deleteplayer(id) {
-  return findById(id).del(id);
-}
+router.post("/login", (req, res) => {
+  let { playerName, password } = req.body;
+  Player.findBy({ playerName })
+    .first()
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      console.log("wrong");
+      res.status(500).json(err);
+    });
+});
+module.exports = router;

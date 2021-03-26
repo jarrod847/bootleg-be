@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const server = express();
 const { auth } = require("express-openid-connect");
+const playerRouter = require("./player/player-router");
 require("dotenv").config();
 server.use(
   auth({
@@ -22,5 +23,5 @@ server.get("/", (req, res) => {
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-
+server.use("/player", playerRouter);
 module.exports = server;
