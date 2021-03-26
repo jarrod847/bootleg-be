@@ -26,4 +26,16 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/login", (req, res) => {
+  let { playerName, password } = req.body;
+  Player.findBy({ playerName })
+    .first()
+    .then((user) => {
+      res.status(200).json(user);
+    })
+    .catch((err) => {
+      console.log("wrong");
+      res.status(500).json(err);
+    });
+});
 module.exports = router;
