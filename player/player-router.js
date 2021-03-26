@@ -3,6 +3,7 @@ const Player = require("./player-modal");
 
 router.post("/register", (req, res) => {
   let user = req.body;
+  console.log("message", user);
 
   Player.addPlayer(user)
     .then((newUser) => {
@@ -24,3 +25,5 @@ router.get("/", (req, res) => {
       res.status(500).json({ message: "could not get users" });
     });
 });
+
+module.exports = router;
