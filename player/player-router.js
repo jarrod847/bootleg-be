@@ -31,7 +31,7 @@ router.post("/login", (req, res) => {
   Player.findBy({ playerName })
     .first()
     .then((user) => {
-      res.status(200).json(user);
+      res.status(200).json({ message: "you are logged in", user });
     })
     .catch((err) => {
       console.log("wrong");
