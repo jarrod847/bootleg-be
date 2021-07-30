@@ -1,7 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable("monster", (mon) => {
     mon.increments("").unique();
-    mon.string("name").NotNullable().unique();
+    mon.string("name").unique();
     mon.integer("Lvl");
     mon.integer("HP");
     mon.integer("Str");
