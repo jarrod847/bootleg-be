@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Player = require("./player-modal");
+const Player = require("./player-model");
 
 router.post("/register", (req, res) => {
   let user = req.body;
