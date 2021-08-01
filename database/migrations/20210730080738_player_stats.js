@@ -10,13 +10,13 @@ exports.up = function (knex) {
       .inTable("player")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
-    table.integer("HP").defaultTo(0);
+    table.integer("Hp").defaultTo(0);
     table.integer("Lvl").defaultTo(0);
     table.integer("Str").defaultTo(0);
     table.integer("Dex").defaultTo(0);
     table.integer("Int").defaultTo(0);
     table.integer("Location").defaultTo(1);
-    table.integer("xp").defaultTo(0);
+    table.integer("Xp").defaultTo(0);
   });
 };
 
