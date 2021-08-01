@@ -28,6 +28,7 @@ router.post("/add", async (req, res) => {
       .status(200)
       .json({ message: "you have created a monster", monster: newMonster });
   } catch (e) {
+    console.log(e);
     res
       .status(500)
       .json({ message: "could not create a new monster", error: e });

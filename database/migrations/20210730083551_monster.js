@@ -3,10 +3,10 @@ exports.up = function (knex) {
     mon.increments("id").unique();
     mon.string("name").unique();
     mon.integer("Lvl");
-    mon.integer("HP");
+    mon.integer("Hp");
     mon.integer("Str");
     mon.integer("Def");
-    mon.integer("MP");
+    mon.integer("Mp");
     mon.integer("Location");
     mon.integer("yExp");
   });
