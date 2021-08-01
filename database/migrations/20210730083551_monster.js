@@ -1,11 +1,11 @@
 exports.up = function (knex) {
   return knex.schema.createTable("monster", (mon) => {
-    mon.increments("").unique();
+    mon.increments("id").unique();
     mon.string("name").unique();
     mon.integer("Lvl");
     mon.integer("HP");
     mon.integer("Str");
-    mon.integer("Dex");
+    mon.integer("Def");
     mon.integer("MP");
     mon.integer("Location");
     mon.integer("yExp");
