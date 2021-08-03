@@ -5,6 +5,7 @@ const server = express();
 // const { auth } = require("express-openid-connect");
 const playerRouter = require("./api/player/player-router");
 const monsterRouter = require("./api/monster/monster-router");
+const atkRouter = require("./api/attack/attack-router");
 require("dotenv").config();
 // server.use(
 //   auth({
@@ -26,4 +27,5 @@ server.use(cors());
 server.use(express.json());
 server.use("/player", playerRouter);
 server.use("/monster", monsterRouter);
+server.use("/atk", atkRouter);
 module.exports = server;
