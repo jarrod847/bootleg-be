@@ -4,6 +4,8 @@ exports.up = function (knex) {
     atk.string("name").unique();
     atk.integer("damage");
     atk.string("description");
+    atk.enu("atkType", ["Special", "Melee", "Ranged", "Magic"]);
+    atk.integer("mp_cost").defaultTo(0);
   });
 };
 
