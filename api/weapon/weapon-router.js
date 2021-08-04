@@ -19,4 +19,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.post("/add", async (req, res) => {
+  try {
+    const newWeapon = await Weapon.addWeapon(req.body);
+    res.status(200).json({ message: "you have created a weapon", wpn: weapon });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .json({ message: "could not create a new weapon", error: e });
+  }
+});
+
 module.exports = router;
