@@ -31,4 +31,13 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedWpn = await Weapon.deleteWeapon(req.params.id);
+    res.status(200).json({ message: "weapon was deleted", wpn: deletedWpn });
+  } catch (e) {
+    res.status.json({ message: "could not delete weapon", error: e });
+  }
+});
+
 module.exports = router;
