@@ -9,8 +9,9 @@ exports.up = function (knex) {
       .references("id")
       .inTable("monster")
       .onUpdate("CASCADE")
-      .onDelete("CASCADE")
-      .wpn.integer("attack_1")
+      .onDelete("CASCADE");
+    wpn
+      .integer("attack_1")
       .unsigned()
       .references("id")
       .inTable("attack")
