@@ -23,3 +23,11 @@ function addLocation(location) {
       return getLocationById(id);
     });
 }
+
+function updateLocation(id, changes) {
+  return getLocationById(id).update({ changes }).returning("*");
+}
+
+function deleteLocation(id) {
+  return getLocationById(id).del();
+}
