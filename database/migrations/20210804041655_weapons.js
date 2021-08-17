@@ -1,6 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable("weapon", (wpn) => {
     wpn.increments("id").unique();
+    wpn.string("name").unique();
     wpn.integer("Wpn_lvl").defaultTo(0);
     wpn.integer("Str").defaultTo(0);
     wpn.integer("Dex").defaultTo(0);
