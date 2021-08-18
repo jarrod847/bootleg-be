@@ -9,3 +9,12 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "could not get the locations" });
   }
 });
+
+router.get("/:id", async (req, res) => {
+  try {
+    const location = await Location.getLocationById(req.params.id);
+    res.status(200).json({ message: "got location", loc: location });
+  } catch (e) {
+    res.status(500).json({ message: "could not get location", error: e });
+  }
+});
