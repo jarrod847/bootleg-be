@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("player_inventory", (tbl) => {
-    tbl.increments("id").unqiue();
+    tbl.increments("id").unique();
     tbl
       .integer("player_id")
       .unique()

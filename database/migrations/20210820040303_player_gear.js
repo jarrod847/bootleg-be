@@ -1,5 +1,3 @@
-const { WSAEOPNOTSUPP } = require("node:constants");
-
 exports.up = function (knex) {
   return knex.schema.createTable("player_gear", (tbl) => {
     tbl.increments("id").unique();
