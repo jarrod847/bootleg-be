@@ -32,3 +32,14 @@ router.post("/add", async (req, res) => {
       .json({ message: "could not create a new location", error: e });
   }
 });
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedLoc = await Location.deleteLocation(req.params.id);
+    res.status(200).json({ message: "location was deleted", loc: deletedLoc });
+  } catch (e) {
+    res.status.json({ message: "could not delete location", error: e });
+  }
+});
+
+router.delete;
