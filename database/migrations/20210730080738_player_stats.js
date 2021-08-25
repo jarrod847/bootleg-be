@@ -19,6 +19,7 @@ exports.up = function (knex) {
     table.integer("Int").defaultTo(0);
     table.integer("Location").defaultTo(0);
     table.integer("Xp").defaultTo(0);
+    table.integer("stat_points").defaultTo(0);
   });
 };
 
