@@ -10,15 +10,17 @@ exports.up = function (knex) {
       .inTable("player")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
-    table.integer("Hp").defaultTo(0);
+    table.integer("Hp").defaultTo(100);
+    table.integer("total_hp").defaultTo(100);
     table.integer("Mp").defaultTo(0);
     table.integer("Vig").defaultTo(0);
-    table.integer("Lvl").defaultTo(0);
+    table.integer("Lvl").defaultTo(1);
     table.integer("Str").defaultTo(0);
     table.integer("Dex").defaultTo(0);
     table.integer("Int").defaultTo(0);
     table.integer("Location").defaultTo(0);
     table.integer("Xp").defaultTo(0);
+    table.integer("stat_points").defaultTo(0);
   });
 };
 
