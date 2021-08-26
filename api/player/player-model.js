@@ -6,12 +6,33 @@ module.exports = {
   deleteplayer,
   findBy,
   playerUpdate,
+  playerAndStatsById,
 };
 
 function findPlayer() {
   return db("player").select("id", "playerName");
 }
 
+function playerAndStatsById(id) {
+  return db("player")
+    .join("player_stats as s", "player.id", "s.player_id")
+    .where("player.id", id)
+    .first()
+    .select(
+      "player.playerName",
+      "player.online",
+      "s.Hp",
+      "s.Mp",
+      "s.Vig",
+      "s.Lvl",
+      "s.Str",
+      "s.Dex",
+      "s.Int",
+      "s.Location",
+      "s.Xp",
+      "stat_points"
+    );
+}
 function addPlayer(user) {
   return db("player")
     .insert(user, "id")
