@@ -2,7 +2,6 @@ const db = require("../../database/config");
 
 module.exports = {
   playerStats,
-  updateStats,
   addStats,
   allStats,
 };

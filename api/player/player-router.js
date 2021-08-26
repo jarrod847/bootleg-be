@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Player = require("./player-model");
+const Stats = require("./playerStats-model");
 
 router.post("/register", (req, res) => {
   let user = req.body;
@@ -7,7 +8,20 @@ router.post("/register", (req, res) => {
 
   Player.addPlayer(user)
     .then((newUser) => {
-      res.status(201).json(newUser);
+      Stats.addStats(newUser.id)
+        .then((userStats) => {
+          res.status(200).json({
+            message: "created player with stats",
+            player: user,
+            stats: userStats,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          res
+            .status(500)
+            .json({ message: "could not create stats for the player" });
+        });
     })
     .catch((error) => {
       console.log(error);
@@ -31,7 +45,14 @@ router.post("/login", (req, res) => {
   Player.findBy({ playerName })
     .first()
     .then((user) => {
-      res.status(200).json({ message: "you are logged in", user });
+      Player.playerAndStatsById(user.id)
+        .then((plyInfo) => {
+          res.status(200).json({ message: "login successful", ply: plyInfo });
+        })
+        .catch((error) => {
+          console.log(error);
+          res.stats(500).json({ message: "could not get player stats" });
+        });
     })
     .catch((err) => {
       console.log("wrong");

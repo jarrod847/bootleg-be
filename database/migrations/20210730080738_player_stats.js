@@ -10,7 +10,7 @@ exports.up = function (knex) {
       .inTable("player")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
-    table.integer("Hp").defaultTo(0);
+    table.integer("Hp").defaultTo(100);
     table.integer("Mp").defaultTo(0);
     table.integer("Vig").defaultTo(0);
     table.integer("Lvl").defaultTo(0);
