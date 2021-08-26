@@ -30,7 +30,8 @@ function playerAndStatsById(id) {
       "s.Int",
       "s.Location",
       "s.Xp",
-      "stat_points"
+      "s.stat_points",
+      "s.total_hp"
     );
 }
 function addPlayer(user) {

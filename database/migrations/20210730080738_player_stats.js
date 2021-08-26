@@ -11,9 +11,10 @@ exports.up = function (knex) {
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table.integer("Hp").defaultTo(100);
+    table.integer("total_hp").defaultTo(100);
     table.integer("Mp").defaultTo(0);
     table.integer("Vig").defaultTo(0);
-    table.integer("Lvl").defaultTo(0);
+    table.integer("Lvl").defaultTo(1);
     table.integer("Str").defaultTo(0);
     table.integer("Dex").defaultTo(0);
     table.integer("Int").defaultTo(0);
