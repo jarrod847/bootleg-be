@@ -10,6 +10,7 @@ exports.up = function (knex) {
       .inTable("player")
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
+    tbl.integer("gold").defaultTo(0);
     tbl.string("slot_1");
     tbl.string("slot_2");
     tbl.string("slot_3");
