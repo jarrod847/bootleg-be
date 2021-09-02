@@ -23,7 +23,9 @@ router.get("/:id", async (req, res) => {
 router.post("/add", async (req, res) => {
   try {
     const newAtk = await Atk.addAttack(req.body);
-    res.status(200).json({ message: "you have created a attack", atk: newAtk });
+    res
+      .status(200)
+      .json({ message: "you have created an attack", atk: newAtk });
   } catch (e) {
     console.log(e);
     res
