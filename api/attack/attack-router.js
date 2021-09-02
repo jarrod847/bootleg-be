@@ -6,6 +6,7 @@ router.get("/", async (req, res) => {
     const allAtks = await Atk.getAttacks();
     res.status(200).json({ message: "got all attacks", atk: allAtks });
   } catch (e) {
+    console.log(e);
     res.status(500).json({ message: "could not get attacks", error: e });
   }
 });

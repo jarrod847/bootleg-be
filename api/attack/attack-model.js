@@ -8,15 +8,15 @@ module.exports = {
 };
 
 function getAttacks() {
-  return db("attacks");
+  return db("attack");
 }
 
 function getAttackById(id) {
-  return db("attacks").where("id", id).first();
+  return db("attack").where("id", id).first();
 }
 
 function addAttack(attack) {
-  return db("attacks")
+  return db("attack")
     .insert(attack, "id")
     .then(([id]) => {
       return getAttackById(id);
