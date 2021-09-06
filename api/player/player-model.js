@@ -7,6 +7,8 @@ module.exports = {
   findBy,
   playerUpdate,
   playerAndStatsById,
+  addPlayerGear,
+  playerGearByPlayerId,
 };
 
 function findPlayer() {
