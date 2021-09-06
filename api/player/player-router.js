@@ -29,6 +29,20 @@ router.post("/register", (req, res) => {
     });
 });
 
+router.get("/addGear", (req, res) => {
+  let id = req.body.id;
+  Player.addPlayerGear(id)
+    .then((plyGear) => {
+      res
+        .status(200)
+        .json({ message: "added player gear to database", gear: plyGear });
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(500).json({ message: "could not create gear for player" });
+    });
+});
+
 router.get("/", (req, res) => {
   Player.findPlayer()
     .then((player) => {
