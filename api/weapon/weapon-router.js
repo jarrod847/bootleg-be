@@ -22,7 +22,9 @@ router.get("/:id", async (req, res) => {
 router.post("/add", async (req, res) => {
   try {
     const newWeapon = await Weapon.addWeapon(req.body);
-    res.status(200).json({ message: "you have created a weapon", wpn: weapon });
+    res
+      .status(200)
+      .json({ message: "you have created a weapon", wpn: newWeapon });
   } catch (e) {
     console.log(e);
     res
