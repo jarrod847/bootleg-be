@@ -57,3 +57,11 @@ function findBy(filter) {
 function playerUpdate(id, newInfo) {
   return db("player").where({ id }).update({ newInfo });
 }
+
+function playerGearByPlayerId(player_id) {
+  return db("player_gear").where("player_id", id);
+}
+
+function addPlayerGear(player_id) {
+  return db("player_gear").insert(id, "player_id");
+}
