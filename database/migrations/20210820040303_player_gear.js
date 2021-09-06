@@ -2,6 +2,15 @@ exports.up = function (knex) {
   return knex.schema.createTable("player_gear", (tbl) => {
     tbl.increments("id").unique();
     tbl
+      .integer("player_id")
+      .unique()
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("player")
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
+    tbl
       .integer("head")
       .unsigned()
       .references("id")

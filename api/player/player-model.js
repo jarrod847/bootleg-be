@@ -7,6 +7,9 @@ module.exports = {
   findBy,
   playerUpdate,
   playerAndStatsById,
+  addPlayerGear,
+  playerGearByPlayerId,
+  allPlayerGear,
 };
 
 function findPlayer() {
@@ -56,4 +59,20 @@ function findBy(filter) {
 
 function playerUpdate(id, newInfo) {
   return db("player").where({ id }).update({ newInfo });
+}
+
+function playerGearByPlayerId(player_id) {
+  return db("player_gear").where("player_id", player_id).first();
+}
+
+function addPlayerGear(id) {
+  return db("player_gear")
+    .insert({ player_id: id }, "id")
+    .then(() => {
+      return playerGearByPlayerId(id);
+    });
+}
+
+function allPlayerGear() {
+  return db("player_gear");
 }
