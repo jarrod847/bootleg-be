@@ -30,8 +30,10 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/addGear", async (req, res) => {
+  const plyId = req.body.player_id;
   try {
-    const plyGear = await Player.addPlayerGear(req.body.id);
+    console.log("player id", plyId);
+    const plyGear = await Player.addPlayerGear(req.body.player_id);
     res
       .status(200)
       .json({ message: "added player gear to database", gear: plyGear });
@@ -62,6 +64,20 @@ router.get("/", (req, res) => {
       console.log(e);
       res.status(500).json({ message: "could not get users" });
     });
+});
+
+router.get("/gear/", async (req, res) => {
+  try {
+    const allPlayerGear = await Player.allPlayerGear();
+    res
+      .status(200)
+      .json({ message: "got all player gear", gear: allPlayerGear });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .json({ message: "could not get all players gear", error: e });
+  }
 });
 
 router.post("/login", (req, res) => {

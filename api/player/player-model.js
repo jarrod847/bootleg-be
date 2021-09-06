@@ -9,6 +9,7 @@ module.exports = {
   playerAndStatsById,
   addPlayerGear,
   playerGearByPlayerId,
+  allPlayerGear,
 };
 
 function findPlayer() {
@@ -61,9 +62,17 @@ function playerUpdate(id, newInfo) {
 }
 
 function playerGearByPlayerId(player_id) {
-  return db("player_gear").where("player_id", id);
+  return db("player_gear").where("player_id", player_id).first();
 }
 
-function addPlayerGear(player_id) {
-  return db("player_gear").insert(id, "player_id");
+function addPlayerGear(id) {
+  return db("player_gear")
+    .insert({ player_id: id }, "id")
+    .then(() => {
+      return playerGearByPlayerId(id);
+    });
+}
+
+function allPlayerGear() {
+  return db("player_gear");
 }
