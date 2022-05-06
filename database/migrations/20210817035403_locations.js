@@ -3,6 +3,7 @@ exports.up = function (knex) {
     loc.increments("id").unique();
     loc.string("name", 16).notNullable().unique();
     loc.integer("locationLvl").defaultTo(0);
+    loc.string("Description").defaultTo("No Information");
   });
 };
 
