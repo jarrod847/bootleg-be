@@ -7,6 +7,7 @@ exports.up = function (knex) {
     mon.integer("Str");
     mon.integer("Def");
     mon.integer("Mp");
+    mon.integer("Shield").default(0);
     mon.integer("Loc");
     mon.integer("yExp");
   });

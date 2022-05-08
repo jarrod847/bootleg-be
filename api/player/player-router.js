@@ -10,11 +10,21 @@ router.post("/register", (req, res) => {
     .then((newUser) => {
       Stats.addStats(newUser.id)
         .then((userStats) => {
-          res.status(200).json({
-            message: "created player with stats",
-            player: user,
-            stats: userStats,
-          });
+          Player.addPlayerGear(newUser.id)
+            .then((player_gear) => {
+              res.status(200).json({
+                message: "created player with stats and gear",
+                player: user,
+                stats: userStats,
+                gear: player_gear,
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+              res
+                .status(500)
+                .json({ message: "could not create stats for the player" });
+            });
         })
         .catch((error) => {
           console.log(error);
@@ -87,7 +97,20 @@ router.post("/login", (req, res) => {
     .then((user) => {
       Player.playerAndStatsById(user.id)
         .then((plyInfo) => {
-          res.status(200).json({ message: "login successful", ply: plyInfo });
+          Player.playerGearByPlayerId(user.id)
+            .then((gear) => {
+              res
+                .status(200)
+                .json({
+                  message: "login successful",
+                  ply: plyInfo,
+                  plyGear: gear,
+                });
+            })
+            .catch((error) => {
+              console.log(error);
+              res.status(500).json({ message: "Could not get player gear" });
+            });
         })
         .catch((error) => {
           console.log(error);
