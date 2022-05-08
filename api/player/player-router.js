@@ -97,7 +97,16 @@ router.post("/login", (req, res) => {
     .then((user) => {
       Player.playerAndStatsById(user.id)
         .then((plyInfo) => {
-          res.status(200).json({ message: "login successful", ply: plyInfo });
+          Player.playerGearByPlayerId(user.id)
+            .then((gear) => {
+              res
+                .status(200)
+                .json({ message: "login successful", ply: plyInfo });
+            })
+            .catch((error) => {
+              console.log(error);
+              res.status(500).json({ message: "Could not get player gear" });
+            });
         })
         .catch((error) => {
           console.log(error);
