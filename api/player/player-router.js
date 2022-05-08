@@ -101,7 +101,11 @@ router.post("/login", (req, res) => {
             .then((gear) => {
               res
                 .status(200)
-                .json({ message: "login successful", ply: plyInfo });
+                .json({
+                  message: "login successful",
+                  ply: plyInfo,
+                  plyGear: gear,
+                });
             })
             .catch((error) => {
               console.log(error);
