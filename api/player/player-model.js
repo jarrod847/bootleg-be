@@ -23,6 +23,7 @@ function playerAndStatsById(id) {
     .first()
     .select(
       "player.playerName",
+      "player.id",
       "player.online",
       "s.Hp",
       "s.Mp",
