@@ -12,6 +12,7 @@ exports.up = function (knex) {
     mon.integer("Shield").default(0);
     mon.integer("Loc");
     mon.integer("yExp");
+    mon.string("talk");
   });
 };
 
