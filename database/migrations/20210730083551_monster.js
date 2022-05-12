@@ -13,6 +13,7 @@ exports.up = function (knex) {
     mon.integer("Loc");
     mon.integer("yExp");
     mon.string("talk");
+    mon.string("description");
   });
 };
 
