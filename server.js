@@ -9,6 +9,7 @@ const atkRouter = require("./api/attack/attack-router");
 const wpnRouter = require("./api/weapon/weapon-router");
 const locRouter = require("./api/location/location-router");
 const playerGearRouter = require("./api/player/playerGear-router");
+const locMonsRouter = require("./api/location/loc-mon-router");
 require("dotenv").config();
 // server.use(
 //   auth({
@@ -34,5 +35,6 @@ server.use("/atk", atkRouter);
 server.use("/wpn", wpnRouter);
 server.use("/loc", locRouter);
 server.use("/playerGear", playerGearRouter);
+server.use("/locMons", locMonsRouter);
 
 module.exports = server;
