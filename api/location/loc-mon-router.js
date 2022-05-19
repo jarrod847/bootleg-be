@@ -14,4 +14,20 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/add", (req, res) => {
+  LocMons.addLocMons(req.body)
+    .then((locMon) => {
+      res.status(200).json({
+        message: "successfully created monsters for location",
+        locMon,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "could not create monsters for location",
+        e: error,
+      });
+    });
+});
+
 module.exports = router;
