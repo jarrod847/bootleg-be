@@ -44,4 +44,18 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  LocMons.delLocMons(req.params.id)
+    .then((locMon) => {
+      res
+        .status(200)
+        .json({ message: "deleted location monsters", deleted: locMon });
+    })
+    .catch((e) => {
+      res
+        .status(500)
+        .json({ message: "could not delete location monsters", error: e });
+    });
+});
+
 module.exports = router;

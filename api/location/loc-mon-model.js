@@ -4,6 +4,7 @@ module.exports = {
   allLocMons,
   findLocMonsById,
   addLocMons,
+  delLocMons,
 };
 
 function allLocMons() {
