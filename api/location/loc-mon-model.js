@@ -4,6 +4,8 @@ module.exports = {
   allLocMons,
   findLocMonsById,
   addLocMons,
+  delLocMons,
+  updateLocMons,
 };
 
 function allLocMons() {
@@ -24,4 +26,8 @@ function addLocMons() {
 
 function delLocMons(id) {
   return findLocMonsById(id).del();
+}
+
+function updateLocMons(id, changes) {
+  return db("location_monsters").where({ id }).update(changes);
 }
