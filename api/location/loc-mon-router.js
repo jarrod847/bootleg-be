@@ -60,7 +60,7 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const locMon = await (req.params.id, req.body);
+    const locMon = await LocMons.updateLocMons(req.params.id, req.body);
     res
       .status(200)
       .json({ message: "updated location monsters", locMons: locMon });
