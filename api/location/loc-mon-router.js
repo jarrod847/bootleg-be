@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
 }
 });
 
-router.post("/add", (req, res) => { 
+router.post("/add", async (req, res) => { 
   try {
     const locMon = await LocMons.addLocMons(req.body)
     res.status(200).json({message: "successfully created monsters for location", locMon,
